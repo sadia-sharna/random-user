@@ -8,31 +8,20 @@ type IProps = {
     placeholder: string;
     searchKeyword: string;
     changeHandler: (e: any) => void;
-    handleSearch?: (e: any) => void;
-    handleKeyDown?: (e: any) => void;
 };
 export function SearchBox(props: IProps) {
-    const { placeholder, searchKeyword, changeHandler, handleSearch, handleKeyDown } = props;
+    const { placeholder, searchKeyword, changeHandler } = props;
 
     return (
         <>
             <TextInput
-                type="text"
                 className="form-control"
                 placeholder={placeholder}
                 value={searchKeyword}
                 onChange={changeHandler}
-                onKeyDown={handleKeyDown}
-            >
-                <Button
-                    className="btn btn-outline-secondary"
-                    type="button"
-                    id="button-addon2"
-                    onClick={handleSearch}>
-
-                    <FontAwesomeIcon icon={Icons.faSearch} />
-                </Button>
+                icon={<FontAwesomeIcon icon={Icons.faSearch} />}>
             </TextInput>
+
         </>
     )
 }

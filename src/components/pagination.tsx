@@ -1,9 +1,8 @@
 import {
-    faChevronLeft,
-    faChevronRight,
+    faAngleDoubleLeft,
+    faAngleDoubleRight
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import _ from "lodash";
 import React from "react";
 
 type Props = {
@@ -24,11 +23,11 @@ export function Pagination(props: Props): JSX.Element {
                     <li
                         className={pageIndex <= 1 ? "page-item disabled" : "page-item "}
                         onClick={() => {
-                            (pageIndex <= 1) ?? onChangePageIndex(pageIndex - 1);
+                            (pageIndex <= 1) || onChangePageIndex(pageIndex - 1);
                         }}
                     >
                         <button className="page-link" tabIndex={-1}>
-                            <FontAwesomeIcon icon={faChevronLeft} />
+                            <FontAwesomeIcon icon={faAngleDoubleLeft} />
                         </button>
                     </li>
                     {
@@ -51,11 +50,11 @@ export function Pagination(props: Props): JSX.Element {
                     <li
                         className={pageIndex >= pageNumbers ? "page-item disabled" : "page-item "}
                         onClick={() => {
-                            pageIndex >= pageNumbers ?? onChangePageIndex(pageIndex + 1);
+                            pageIndex >= pageNumbers || onChangePageIndex(pageIndex + 1);
                         }}
                     >
                         <button className="page-link" tabIndex={-1}>
-                            <FontAwesomeIcon icon={faChevronRight} />
+                            <FontAwesomeIcon icon={faAngleDoubleRight} />
                         </button>
                     </li>
                 </ul>

@@ -1,45 +1,37 @@
 import React from 'react'
 import { Pagination } from '../../../components'
+import { IUser, PaginationSettings } from '../../../core';
 
-export function TileViewSearchResult() {
+type IProps = {
+    searchResultList?: IUser[];
+    children: any;
+};
+export function TileViewSearchResult(props: IProps) {
+    const { searchResultList, children } = props;
+
     return (
         <>
             <div className="tile-view mt-3">
                 <div className="row row-cols-1 row-cols-md-5 g-4 search-result" >
-
-                    <div
-                        className="col"
-                    >
-                        <div className="card" >
-                            <div className="card-body">
-                                <h5 className="card-title">LastName, First Name</h5>
-                                <div className="card-text">email</div>
-                                <div className="card-text">username</div>
-                                <div className="card-text">registered</div>
+                    {searchResultList && searchResultList.map(item =>
+                        <div
+                            className="col"
+                            key={item?.login?.uuid}
+                        >
+                            <div className="card" >
+                                <div className="card-body">
+                                    <h5 className="card-title">{item?.name?.last}, {item?.name?.first}</h5>
+                                    <div className="card-text">{item?.email}</div>
+                                    <div className="card-text">{item?.login?.username}</div>
+                                    <div className="card-text">{item?.registered?.date}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div
-                        className="col"
-                    >
-                        <div className="card" >
-                            <div className="card-body">
-                                <h5 className="card-title">a</h5>
-                                <div className="card-text">v</div>
-                                <div className="card-text">g</div>
-                                <div className="card-text">registered</div>
-                            </div>
-                        </div>
-                    </div>
-
+                    )}
 
                 </div>
             </div>
-            <Pagination
-                pageIndex={1}
-                count={100}
-                onChangePageIndex={() => { }}
-            />
+            {children}
         </>
     )
 }
