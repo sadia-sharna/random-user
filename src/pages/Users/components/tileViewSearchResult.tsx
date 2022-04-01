@@ -1,6 +1,5 @@
-import React from 'react'
-import { Pagination } from '../../../components'
-import { IUser, PaginationSettings } from '../../../core';
+import React from 'react';
+import { IUser } from '../../../core';
 
 type IProps = {
     searchResultList?: IUser[];
